@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="fr">
+    <head> 
+        <meta charset="UTF-8">
+        <title>Messages</title>
+        <link rel="stylesheet" href="{{url_for('static', filename='css/bootstrap.min.css')}}">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css" integrity="sha512-+4zCK9k+qNFUR5X+cKL9EIR+ZOhtIloNl9GIKS57V1MyNsYpYcUrUeQc9vNfzsWfV28IaLL3i96P9sdNyeRssA==" crossorigin="anonymous" />
+        <link rel="stylesheet" href="{{url_for('static', filename='css/style.css')}}">
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js" integrity="sha512-bLT0Qm9VnAYZDflyKcBaQ2gg0hSYNQrJ8RilYldYQ1FxQYoCLtUjuuRuZo+fjqhx/qtq/1itJ0C2ejDxltZVFg==" crossorigin="anonymous"></script>   
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/2.5.3/umd/popper.min.js" integrity="sha512-53CQcu9ciJDlqhK7UD8dZZ+TF2PFGZrOngEYM/8qucuQba+a+BXOIRsp9PoMNJI3ZeLMVNIxIfZLbG/CdHI5PA==" crossorigin="anonymous"></script>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ho+j7jyWK8fNQe+A12Hb8AhRq26LrZ/JpcUGGOn+Y7RsweNrtN/tE3MoK7ZeZDyx" crossorigin="anonymous"></script>
+       
+    </head>
+    <body>
+        <div class="container-fluid ">
+            <div class="container">
+                <div classe="row">
+                    
+                  
+                                 
+                </div>
+
+            </div>
+            
+        </div>
+        
+        
+        
+        <!-----<link ref="//netdna.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+<script src="//netdna.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+<script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+ Include the above in your HEAD tag ---------->
+  
+        
+<div class="container-fluid">
+    <div class="row">
+      <div class="col-md-4">
+      </div>
+      <div class="col-md-6">
+        <br> <br><br>
+        <div id="loginbox" class="mainbox col-md-10 col-md-offset-3 col-sm-6 col-sm-offset-3"> 
+          <div class="card" >
+            <h5 class="card-header card text-center d-inline"> <i class="fa fa-info" aria-hidden="true"></i> Vous êtes le visiteur num: {{visits}}</h5>
+              <div class="card-body">
+                <div class="border border_secondary rounded-sm"> 
+                  <form id="form" method="POST" class="container form-horizontal " enctype="multipart/form-data" ACTION="{{ url_for('index') }}">
+                    <div class="input-group mb-3">
+                      <div class="input-group-prepend">
+                        <button class="btn btn-info" type="submit" id="button-addon1">Envoyer</button>
+                      </div>
+                      <input type="text" class="form-control" name="message" placeholder="Veuillez introduire votre message" aria-label="Example text with button addon" aria-describedby="button-addon1">
+                      
+                    </div>
+                    <table id ='list_cam' class="table table-hover">
+                      <thead class="table-secondary">
+                        <tr>
+                          <th scope="col">#</th>
+                          <th scope="col" style="width:100%;">LISTE DES DIX DERNIERS MESSAGES :</th>
+                          
+                         
+                        </tr>
+                      </thead>
+                      <tbody>
+                        {% for msg in messages %}  
+                          <tr>
+                            <th scope="row">{{messages.index(msg)+1}}</th>
+                            <td id="table_cap">{{msg[0]}}</td>
+                            
+                          </tr>
+                        {% endfor %}
+                      </tbody>
+                    </table>
+                  </form>                          
+                </div>
+              </div>
+          </div>    
+        </div> 
+      </div>     
+    </div>
+</div>
+
+        
+        </br>
+        
+
+        
+        </body>
+        
+        

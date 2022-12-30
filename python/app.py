@@ -1,4 +1,4 @@
-from flask import Flask, request
+from flask import Flask, request, render_template
 import redis
 import mysql.connector
 
@@ -24,8 +24,10 @@ def index():
     cursor = mysql_db.cursor()
     cursor.execute("SELECT message FROM messages ORDER BY id DESC LIMIT 10")
     messages = cursor.fetchall()
+    data={'messages':messages,'visits':visits}
 
-    return f"""
+    return render_template('index.html', **data)
+    """
         <html>
             <body>
                 <h1>Tu est le visiteur n°  {visits}.</h1>
