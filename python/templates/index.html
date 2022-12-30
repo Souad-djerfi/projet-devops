@@ -32,58 +32,53 @@
  Include the above in your HEAD tag ---------->
   
         
-<div class="container-fluid">
-    <div class="row">
-      <div class="col-md-4">
-      </div>
-      <div class="col-md-6">
-        <br> <br><br>
-        <div id="loginbox" class="mainbox col-md-10 col-md-offset-3 col-sm-6 col-sm-offset-3"> 
-          <div class="card" >
-            <h5 class="card-header card text-center d-inline"> <i class="fa fa-info" aria-hidden="true"></i> Vous êtes le visiteur num: {{visits}}</h5>
-              <div class="card-body">
-                <div class="border border_secondary rounded-sm"> 
-                  <form id="form" method="POST" class="container form-horizontal " enctype="multipart/form-data" ACTION="{{ url_for('index') }}">
-                    <div class="input-group mb-3">
-                      <div class="input-group-prepend">
-                        <button class="btn btn-info" type="submit" id="button-addon1">Envoyer</button>
-                      </div>
-                      <input type="text" class="form-control" name="message" placeholder="Veuillez introduire votre message" aria-label="Example text with button addon" aria-describedby="button-addon1">
-                      
-                    </div>
-                    <table id ='list_cam' class="table table-hover">
-                      <thead class="table-secondary">
-                        <tr>
-                          <th scope="col">#</th>
-                          <th scope="col" style="width:100%;">LISTE DES DIX DERNIERS MESSAGES :</th>
-                          
-                         
-                        </tr>
-                      </thead>
-                      <tbody>
-                        {% for msg in messages %}  
-                          <tr>
-                            <th scope="row">{{messages.index(msg)+1}}</th>
-                            <td id="table_cap">{{msg[0]}}</td>
-                            
-                          </tr>
-                        {% endfor %}
-                      </tbody>
-                    </table>
-                  </form>                          
+          <div class="container-fluid">
+              <div class="row">
+                <div class="col-md-3">
                 </div>
+                <div class="col-md-7">
+                  <br> <br><br>
+                  <div id="loginbox" class="mainbox col-md-10 col-md-offset-3 col-sm-6 col-sm-offset-3"> 
+                    <div class="card" >
+                      <h5 class="card-header card text-center d-inline"> <i class="fa fa-info" aria-hidden="true"></i> Vous êtes le visiteur num: {{visits}}</h5>
+                        <div class="card-body">
+                          <div class="border border_secondary rounded-sm"> 
+                            <form id="form" method="POST" class="container form-horizontal " enctype="multipart/form-data" ACTION="{{ url_for('index') }}">
+                              <div class="input-group mb-3">
+                                <div class="input-group-prepend">
+                                  <button class="btn btn-info" type="submit" id="button-addon1">Envoyer</button>
+                                </div>
+                                <input type="text" class="form-control" name="message" placeholder="Veuillez introduire votre message" aria-label="Example text with button addon" aria-describedby="button-addon1">
+                                
+                              </div>
+                              <table id ='list_cam' class="table table-hover">
+                                <thead class="table-secondary">
+                                  <tr>
+                                    <th scope="col">#</th>
+                                    <th scope="col" style="width:100%;">LISTE DES DIX DERNIERS MESSAGES :</th>
+                                    
+                                  
+                                  </tr>
+                                </thead>
+                                <tbody>
+                                  {% for msg in messages %}  
+                                    <tr>
+                                      <th scope="row">{{messages.index(msg)+1}}</th>
+                                      <td id="table_cap">{{msg[0]}}</td>
+                                      
+                                    </tr>
+                                  {% endfor %}
+                                </tbody>
+                              </table>
+                            </form>                          
+                          </div>
+                        </div>
+                    </div>    
+                  </div> 
+                </div>     
               </div>
-          </div>    
-        </div> 
-      </div>     
-    </div>
-</div>
+          </div>
 
-        
-        </br>
-        
-
-        
         </body>
         
         
