@@ -22,7 +22,7 @@ def index():
 
     # Retrieve the latest messages from MySQL
     cursor = mysql_db.cursor()
-    cursor.execute("SELECT message FROM messages ORDER BY id DESC LIMIT 10")
+    cursor.execute("SELECT message, id FROM messages ORDER BY id DESC LIMIT 10")
     messages = cursor.fetchall()
     data={'messages':messages,'visits':visits}
 
