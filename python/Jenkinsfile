@@ -15,7 +15,7 @@ pipeline {
     stage('Building image') {
       steps{
         script {
-          dockerImage = docker.build testflask
+          sh "docker build -t testflask"
       }
     }
     /*stage('Deploy Image') {
