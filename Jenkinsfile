@@ -19,7 +19,7 @@ pipeline {
       steps {
         script{
           sh "docker tag flask-app $registry"
-          sh "docker image push $dockerImage  "
+          sh "docker image push flask-app "
         }
       }
     }
