@@ -1,6 +1,6 @@
 pipeline {
   environment {
-    githup = "Souad-djerfi/"
+    githup = "./python"
     registry = "souaddjerfi/flask-app"
     registryCredential = 'dockerhub-id'
     dockerImage = ''
@@ -10,7 +10,7 @@ pipeline {
     stage('Building image') {
       steps{
         script { 
-          sh "docker build -t testflask ./python"
+          dockerImage = sh "docker build -t testflask ./python" + ":$BUILD_NUMBER"
           //dockerImage = docker.build registry + ":$BUILD_NUMBER"
         }
       } 
@@ -18,7 +18,8 @@ pipeline {
     stage('deploye our image'){
       steps {
         script{
-          docker
+          sh "docker tag $dockerImage $registry"
+          sh "docker image push $dockerImage  "
         }
       }
     }
