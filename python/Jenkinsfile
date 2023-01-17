@@ -3,8 +3,8 @@ pipeline {
   stages {
     stage('Building image') {
       steps{
-        script {
-          sh "docker build -t testflask ."
+        script { 
+          sh "docker build -t testflask -f python/Dockerfil ."
         }
       } 
     }
