@@ -10,7 +10,7 @@ pipeline {
     stage('Building image') {
       steps{
         script { 
-          dockerImage = sh "docker build -t testflask ./python" 
+          dockerImage = sh "docker build -t flask-app ./python" 
           //dockerImage = docker.build registry + ":$BUILD_NUMBER"
         }
       } 
