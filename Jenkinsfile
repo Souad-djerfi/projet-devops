@@ -18,7 +18,7 @@ pipeline {
     stage('deploye our image'){
       steps {
         script{
-          sh "docker tag $dockerImage $registry"
+          sh "docker tag flask-app $registry"
           sh "docker image push $dockerImage  "
         }
       }
