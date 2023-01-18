@@ -20,8 +20,10 @@ pipeline {
       steps {
         script{
           sh "docker tag flask-app $registry"
-          docker.withRegistry( '', registryCredential ){
-            sh "docker image push flask-app "
+          docker.withRegistry( 'https://hub.docker.com/', registryCredential ){
+            //sh "docker image push flask-app "
+            dockerImage.push()
+
           }
           
         }
