@@ -45,18 +45,21 @@ pipeline
         }
       } 
     }
-    /*stage('deploye our image'){
-      steps {
-        script{
-          //
-          docker.withRegistry( '', registryCredential ){
-            //sh "docker image push flask-app "
-            dockerImage.push()
+    /*stage('deploye our image')
+      {
+        steps 
+        {
+          script
+          {
+            //
+            docker.withRegistry( '', registryCredential )
+            {
+              //sh "docker image push flask-app "
+              dockerImage.push()
 
+            }
           }
-          
         }
-      }
-    }*/
-  } 
+      } */
+  }    
 }
