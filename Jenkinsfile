@@ -23,7 +23,7 @@ pipeline {
         }
       } 
     }
-    stage('deploye our image'){
+    /*stage('deploye our image'){
       steps {
         script{
           //sh "docker tag flask-app $registry"
@@ -35,6 +35,6 @@ pipeline {
           
         }
       }
-    }
+    }*/
   } 
 }
