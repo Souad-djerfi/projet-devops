@@ -35,6 +35,7 @@ pipeline
             sh "docker build -t flask-app ./python "
             sh "docker tag flask-app souaddjerfi/flask-app:$BUILD_NUMBER"
             dockerImage="flask-app:$BUILD_NUMBER"
+            echo " coucoucoucoucoucou" + dockerImage
             docker.withRegistry( '', registryCredential )
             {
             dockerImage.push()  
