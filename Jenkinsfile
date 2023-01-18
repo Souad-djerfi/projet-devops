@@ -1,7 +1,7 @@
 pipeline {
   environment {
     //githup = "./python"
-    registry = "souaddjerfi/flask-app"
+    registry = "souaddjerfi/nextcloud_dockerfile"
     registryCredential = "dockerhub-id"
     dockerImage = ''
 }
@@ -16,7 +16,7 @@ pipeline {
 
             /*docker.withRegistry( '', registryCredential ){
             dockerImage=docker.build("flask-app:$BUILD_NUMBER","./python")
-            dockerImage.push()  
+            dockerImage.push()  */
 
           }*/
    
