@@ -1,7 +1,7 @@
 pipeline {
   environment {
     //githup = "./python"
-    registry = "souaddjerfi/nextcloud_dockerfile"
+    registry = "souadDJERFI/nextcloud_dockerfile"
     registryCredential = "dockerhub-id"
     dockerImage = ''
 }
