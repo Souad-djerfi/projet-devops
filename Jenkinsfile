@@ -16,9 +16,8 @@ pipeline
       {
         script 
         { 
-          sh "docker build -t flask-app ./python" 
-          sh "docker tag flask-app:$$BUILD_NUMBER"
-          
+          sh "docker build -t flask-app ./python && docker tag flask-app:$$BUILD_NUMBER" 
+                   
           //dockerImage = docker.build registry + ":$BUILD_NUMBER"
           //dockerImage=docker.build registry + ":$BUILD_NUMBER"
           dockerImage=flask-app+":$BUILD_NUMBER"
