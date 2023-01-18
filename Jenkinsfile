@@ -16,9 +16,9 @@ pipeline {
 
             /*docker.withRegistry( '', registryCredential ){
             dockerImage=docker.build("flask-app:$BUILD_NUMBER","./python")
-            dockerImage.push()  */
+            dockerImage.push()  
 
-          }
+          }*/
    
         }
       } 
