@@ -18,7 +18,7 @@ pipeline {
             dockerImage=docker.build("flask-app:$BUILD_NUMBER","./python")
             dockerImage.push()  */
 
-          }*/
+          }
    
         }
       } 
