@@ -36,13 +36,14 @@ pipeline
             sh "docker tag flask-app souaddjerfi/flask-app:$BUILD_NUMBER"
             dockerImage="flask-app:$BUILD_NUMBER"
             echo " coucoucoucoucoucou" + dockerImage 
-            sh "docker push souaddjerfi/flask-app:$BUILD_NUMBER"
-            /*docker.withRegistry( '', registryCredential )
+            
+            docker.withRegistry( '', registryCredential )
             {
               echo "je suis dans registrycredential"
-            dockerImage.push()  
+            //dockerImage.push()  
+            sh "docker push souaddjerfi/flask-app:$BUILD_NUMBER"
              echo " le push marche "
-            }*/
+            }
     
           }
         } 
