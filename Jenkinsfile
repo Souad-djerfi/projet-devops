@@ -22,7 +22,7 @@ pipeline
           }
       }*/
     stage('Building image')
-      
+      {
         steps
         {
           script 
@@ -42,7 +42,7 @@ pipeline
     
           }
         } 
-  }
+      }
     /*stage('deploye our image')
       {
         steps 
@@ -59,5 +59,5 @@ pipeline
           }
         }
       } */
-    
+  } 
 }
