@@ -1,6 +1,6 @@
 pipeline {
   environment {
-    githup = "./python"
+    //githup = "./python"
     registry = "souaddjerfi/flask-app"
     registryCredential = "dockerhub-id"
     dockerImage = ''
@@ -12,7 +12,7 @@ pipeline {
         script { 
           //dockerImage = sh "docker build -t flask-app ./python" 
           //dockerImage = docker.build registry + ":$BUILD_NUMBER"
-          dockerImage=docker.build("flask-app","./python/")
+          dockerImage=docker.build("flask-app","./python/") registry + ":$BUILD_NUMBER"
         }
       } 
     }
