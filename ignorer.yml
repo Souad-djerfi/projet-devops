@@ -1,0 +1,8 @@
+name: playbook deployer decoker-compose
+  become: yes
+  hosts: all
+  tasks:
+  - name: supprimer les conteneurs
+      docker_container:
+        name: falsk-app, mysql-db, redis
+        state: absent 
