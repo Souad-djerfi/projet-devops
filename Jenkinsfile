@@ -32,7 +32,7 @@ pipeline
                     
             //dockerImage = docker.build registry + ":$BUILD_NUMBER"
             //dockerImage=docker.build registry + ":$BUILD_NUMBER"
-            sh "docker build -t flask-app ./python "
+            sh "docker buildx build -t flask-app --load ./python "
             sh "docker tag flask-app souaddjerfi/flask-app:$BUILD_NUMBER"
             dockerImage="flask-app:$BUILD_NUMBER"
             echo " coucoucoucoucoucou" + dockerImage 
