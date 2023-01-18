@@ -21,7 +21,7 @@ pipeline
                    
           //dockerImage = docker.build registry + ":$BUILD_NUMBER"
           //dockerImage=docker.build registry + ":$BUILD_NUMBER"
-          dockerImage=flask-app+:$BUILD_NUMBER
+          dockerImage="flask-app:$BUILD_NUMBER"
 
             docker.withRegistry( '', registryCredential )
             {
