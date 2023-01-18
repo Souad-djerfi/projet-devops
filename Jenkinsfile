@@ -21,7 +21,7 @@ pipeline
                    
           //dockerImage = docker.build registry + ":$BUILD_NUMBER"
           //dockerImage=docker.build registry + ":$BUILD_NUMBER"
-          sh "docker build -t flask-app --load ./python "
+          sh "docker buildx build -t flask-app --load ./python "
           dockerImage="flask-app:$BUILD_NUMBER"
           docker.withRegistry( '', registryCredential )
           {
