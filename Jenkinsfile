@@ -2,7 +2,7 @@ pipeline {
   environment {
     githup = "./python"
     registry = "souaddjerfi/flask-app"
-    registryCredential = 'dockerhub-id'
+    registryCredential = "dockerhub-id"
     dockerImage = ''
 }
   agent any
@@ -19,8 +19,8 @@ pipeline {
     stage('deploye our image'){
       steps {
         script{
-          sh "docker tag flask-app $registry"
-          docker.withRegistry( 'https://hub.docker.com/', registryCredential ){
+          //sh "docker tag flask-app $registry"
+          docker.withRegistry( 'https://hub.docker.com/', 'dockerhub-id' ){
             //sh "docker image push flask-app "
             dockerImage.push()
 
