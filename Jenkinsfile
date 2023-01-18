@@ -40,6 +40,7 @@ pipeline
             {
               echo "je suis dans registrycredential"
             dockerImage.push()  
+             echo " le push marche "
             }
     
           }
