@@ -11,7 +11,7 @@ pipeline
   stages 
   {
     
-    stage('Building image')
+    stage('Building image flask-app')
       {
         steps
         {
@@ -23,7 +23,7 @@ pipeline
         } 
       }
 
-      stage('push image')
+      stage('push image flask-app')
       {
         steps
         {
@@ -42,7 +42,36 @@ pipeline
         } 
       }
 
-      stage('run image')
+      stage('Building image mysql-db')
+      {
+        steps
+        {
+          script 
+          { 
+            sh "docker build -t mysql-app ./database "
+            
+          }
+        } 
+      }
+
+      stage('push image mysql-db')
+      {
+        steps
+        {
+          script 
+          { 
+            
+            docker.withRegistry( '', registryCredential )
+            {
+              sh "docker tag mysql-db souaddjerfi/mysql-db:$BUILD_NUMBER"                                  
+              sh "docker push souaddjerfi/mysql-db:$BUILD_NUMBER"
+             
+            }
+          }
+        } 
+      }
+
+      stage('run docker-compose')
       {
         steps
         {
@@ -51,7 +80,7 @@ pipeline
             
            docker.withRegistry( '', registryCredential )
             {
-              sh "docker run --name flask-app souaddjerfi/flask-app:$BUILD_NUMBER"
+              sh "docker-compose up"
              
             }
             
