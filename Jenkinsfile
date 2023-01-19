@@ -48,7 +48,7 @@ pipeline
         {
           script 
           { 
-            sh "docker build -t mysql-app ./database "
+            sh "docker build -t mysql-db ./database "
             
           }
         } 
