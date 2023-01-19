@@ -75,16 +75,12 @@ pipeline
       {
         steps
         {
-          script 
-          { 
+           
             
-           docker.withRegistry( '', registryCredential )
-            {
-              sh "/usr/bin/docker-compose build -d"
+            sh "docker-compose up -d"
              
-            }
-            
-          }
+                     
+          
         } 
       }
   } 
