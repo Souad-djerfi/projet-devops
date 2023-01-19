@@ -11,7 +11,7 @@ pipeline
   stages 
   {
     
-    stage('Building image flask-app')
+    /*stage('Building image flask-app')
       {
         steps
         {
@@ -69,7 +69,7 @@ pipeline
             }
           }
         } 
-      }
+      }*/
 
       stage('run docker-compose')
       {
@@ -80,7 +80,7 @@ pipeline
             
            docker.withRegistry( '', registryCredential )
             {
-              sh "/usr/bin/docker-compose up --build -d"
+              sh "/usr/bin/docker-compose build -d"
              
             }
             
