@@ -18,8 +18,7 @@ pipeline
           script 
           { 
             sh "docker build -t flask-app ./python "
-            sh "docker tag flask-app souaddjerfi/flask-app:$BUILD_NUMBER"
-                                  
+            
           }
         } 
       }
@@ -33,9 +32,29 @@ pipeline
             
             docker.withRegistry( '', registryCredential )
             {
+              sh "docker tag flask-app souaddjerfi/flask-app:$BUILD_NUMBER"                                  
               sh "docker push souaddjerfi/flask-app:$BUILD_NUMBER"
              
             }
+             
+            
+          }
+        } 
+      }
+
+      stage('run image')
+      {
+        steps
+        {
+          script 
+          { 
+            
+           docker.withRegistry( '', registryCredential )
+            {
+              sh "docker run --name flask-app flask-app:$BUILD_NUMBER"
+             
+            }
+            
              
             
           }
