@@ -10,75 +10,53 @@ pipeline
   agent any
   stages 
   {
-    
-    /*stage('Building image flask-app')
+    stage('Building image flask-app')
       {
         steps
         {
-          script 
-          { 
-            sh "docker build -t flask-app ./python "
-            
-          }
+          sh "docker build -t flask-app ./python "
+          
         } 
       }
 
-      stage('push image flask-app')
+    stage('push image flask-app')
+    {
+      steps
       {
-        steps
-        {
-          script 
-          { 
-            
-            docker.withRegistry( '', registryCredential )
-            {
-              sh "docker tag flask-app souaddjerfi/flask-app:$BUILD_NUMBER"                                  
-              sh "docker push souaddjerfi/flask-app:$BUILD_NUMBER"
-             
-            }
-             
-            
-          }
-        } 
-      }
+        sh "docker tag flask-app souaddjerfi/flask-app:$BUILD_NUMBER"                                  
+        sh "docker push souaddjerfi/flask-app:$BUILD_NUMBER"
+      } 
+    }
 
-      stage('Building image mysql-db')
+    stage('Building image mysql-db')
+    {
+      steps
       {
-        steps
-        {
-          script 
-          { 
-            sh "docker build -t mysql-db ./database "
-            
-          }
-        } 
-      }
+        sh "docker build -t mysql-db ./database "
+      } 
+    }
 
-      stage('push image mysql-db')
+    stage('push image mysql-db')
+    {
+      steps
       {
-        steps
-        {
-          script 
-          { 
-            
-            docker.withRegistry( '', registryCredential )
-            {
-              sh "docker tag mysql-db souaddjerfi/mysql-db:$BUILD_NUMBER"                                  
-              sh "docker push souaddjerfi/mysql-db:$BUILD_NUMBER"
-             
-            }
+        script 
+        { 
+          docker.withRegistry( '', registryCredential )
+          {
+            sh "docker tag mysql-db souaddjerfi/mysql-db:$BUILD_NUMBER"                                  
+            sh "docker push souaddjerfi/mysql-db:$BUILD_NUMBER"
           }
-        } 
-      }*/
+        }
+      } 
+    }
 
-      stage('run docker-compose')
+    stage('run docker-compose')
+    {
+      steps
       {
-        steps
-        {
-           
-          sh "docker-compose up -d"
-               
-        } 
-      }
+        sh "docker-compose up -d"
+      } 
+    }
   } 
 }
