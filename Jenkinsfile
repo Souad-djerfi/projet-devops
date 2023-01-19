@@ -30,7 +30,7 @@ pipeline
         } 
       }
 
-      stage('Building image')
+      stage('push image')
       {
         steps
         {
