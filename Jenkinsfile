@@ -2,10 +2,8 @@ pipeline
 {
   environment 
   {
-    //githup = "./python"
-    registry = "souaddjerfi/flask-app"
     registryCredential = "dockerhub-id"
-    dockerImage = ''
+    
   }
   agent any
   stages 
