@@ -23,11 +23,14 @@ pipeline
     {
       steps
       {
-        docker.withRegistry( '', registryCredential )
-        {
-         sh "docker tag flask-app souaddjerfi/flask-app:$BUILD_NUMBER"                                  
-         sh "docker push souaddjerfi/flask-app:$BUILD_NUMBER"
-        } 
+        script 
+        { 
+          docker.withRegistry( '', registryCredential )
+          {
+            sh "docker tag flask-app souaddjerfi/flask-app:$BUILD_NUMBER"                                  
+            sh "docker push souaddjerfi/flask-app:$BUILD_NUMBER"
+          } 
+        }  
       } 
     }
 
