@@ -80,7 +80,7 @@ pipeline
             
            docker.withRegistry( '', registryCredential )
             {
-              sh "/usr/bin/docker-compose build -d"
+              sh "docker-compose build -d"
              
             }
             
