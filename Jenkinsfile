@@ -29,7 +29,8 @@ pipeline {
                 script {
                     docker.withRegistry('', registryCredential) {
     
-                        sh "docker tag $imageName $registry/$imageName:$BUILD_NUMBER"                              
+                        sh "docker tag $imageName $registry/$imageName:$BUILD_NUMBER" 
+                        sh "docker tag $imageName $registry/$imageName:latest"                               
                         sh "docker push $registry/$imageName:$BUILD_NUMBER"
                         sh "docker push $registry/$imageName:latest"
 
