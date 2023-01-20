@@ -1,7 +1,8 @@
 pipeline {
     environment {
         registry = 'afarizahalim'
-        imageName = 'flask-app'
+        imageFlask = 'flask-app'
+        imageDB = 'mysql-db'
         registryCredential = 'dockerhub_id'
         dockerImage = ''
     }
@@ -20,7 +21,8 @@ pipeline {
         stage('Building our image') {
             steps {
                 script {
-                    sh "docker build -t $imageName ./python "
+                    sh "docker build -t $imageFlask ./python "
+                    sh "docker build -t $imageDB ./database "
                 }
             }
         }
@@ -29,28 +31,33 @@ pipeline {
                 script {
                     docker.withRegistry('', registryCredential) {
     
-                        sh "docker tag $imageName $registry/$imageName:$BUILD_NUMBER" 
-                        sh "docker tag $imageName $registry/$imageName:latest"                               
-                        sh "docker push $registry/$imageName:$BUILD_NUMBER"
-                        sh "docker push $registry/$imageName:latest"
+                        sh "docker tag $imageFlask $registry/$imageFlask:$BUILD_NUMBER" 
+                        sh "docker tag $imageFlask $registry/$imageFlask:latest"                               
+                        sh "docker push $registry/$imageFlask:$BUILD_NUMBER"
+                        sh "docker push $registry/$imageFlask:latest"
+
+                        sh "docker tag $imageDB $registry/$imageDB:$BUILD_NUMBER" 
+                        sh "docker tag $imageDB $registry/$imageDB:latest"                               
+                        sh "docker push $registry/$imageDB:$BUILD_NUMBER"
+                        sh "docker push $registry/$imageDB:latest"
 
                     }
                 }
             }
         }
-        // stage('Run our image') {
-        //     steps {
-        //         script {
-        //             docker.withRegistry('', registryCredential) {
-        //                 dockerImage.run()
-        //             }
-        //         }
-        //     }
-        // }
+        stage('Run docker-compose') {
+            steps {
+                script {
+                    docker.withRegistry('', registryCredential) {
+                        sh "docker-compose build -d"
+                    }
+                }
+            }
+        }
         // stage('Cleaning up') {
         //     steps {
-        //         sh "docker rmi $registry/$imageName:$BUILD_NUMBER"
-        //         //sh "docker rmi $registry/$imageName:latest"
+        //         sh "docker rmi $registry/$imageFlask:$BUILD_NUMBER"
+        //         //sh "docker rmi $registry/$imageFlask:latest"
         //     }
         // }
     }
