@@ -1,9 +1,9 @@
 pipeline {
     environment {
-        registry = 'afarizahalim'
+        registry = 'souaddjerfi'
         imageFlask = 'flask-app'
         imageDB = 'mysql-db'
-        registryCredential = 'dockerhub_id'
+        registryCredential = 'dockerhub-id'
         dockerImage = ''
     }
     agent any
