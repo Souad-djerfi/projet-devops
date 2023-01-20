@@ -15,8 +15,6 @@ mysql_db = mysql.connector.connect(
     database="test"
 )
 
-String password = System.getProperty("database.password");
-
 @app.route("/")
 def index():
     # Increment the number of visits in Redis
