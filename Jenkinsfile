@@ -47,11 +47,7 @@ pipeline {
         }
         stage('Run docker-compose') {
             steps {
-                script {
-                    docker.withRegistry('', registryCredential) {
-                        sh "docker-compose build -d"
-                    }
-                }
+                sh "docker-compose up -d"
             }
         }
         // stage('Cleaning up') {
