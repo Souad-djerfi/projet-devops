@@ -50,11 +50,11 @@ pipeline {
                 sh "docker-compose up -d"
             }
         }
-        // stage('Cleaning up') {
-        //     steps {
-        //         sh "docker rmi $registry/$imageFlask:$BUILD_NUMBER"
-        //         //sh "docker rmi $registry/$imageFlask:latest"
-        //     }
-        // }
+        stage('Cleaning up') {
+            steps {
+                sh "docker rmi $registry/$imageFlask:$BUILD_NUMBER"
+                sh "docker rmi $registry/$imageDB:$BUILD_NUMBER"
+            }
+        }
     }
 }
