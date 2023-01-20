@@ -40,7 +40,6 @@ pipeline {
                         sh "docker tag $imageDB $registry/$imageDB:latest"                               
                         sh "docker push $registry/$imageDB:$BUILD_NUMBER"
                         sh "docker push $registry/$imageDB:latest"
-
                     }
                 }
             }
