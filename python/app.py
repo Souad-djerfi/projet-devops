@@ -15,6 +15,11 @@ mysql_db = mysql.connector.connect(
     database="test"
 )
 
+<<<<<<< HEAD
+=======
+#String password = System.getProperty("database.password");
+
+>>>>>>> f38f93e (vagrantfile)
 @app.route("/")
 def index():
     # Increment the number of visits in Redis
