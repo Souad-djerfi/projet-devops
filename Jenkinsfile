@@ -18,15 +18,21 @@ pipeline {
                 }
             }
         }
-        stage('Building our image') {
+        stage('Build python image') {
             steps {
                 script {
                     sh "docker build -t $imageFlask ./python "
-                    sh "docker build -t $imageDB ./database "
                 }
             }
         }
-        stage('Deploy our image') {
+        stage('Build database image') {
+            steps {
+                script {
+                    sh "docker build -t $imageFlask ./python "
+                }
+            }
+        }   
+        stage('Deploy python image') {
             steps {
                 script {
                     docker.withRegistry('', registryCredential) {
@@ -35,7 +41,14 @@ pipeline {
                         sh "docker tag $imageFlask $registry/$imageFlask:latest"                               
                         sh "docker push $registry/$imageFlask:$BUILD_NUMBER"
                         sh "docker push $registry/$imageFlask:latest"
-
+                    }
+                }
+            }
+        }
+        stage('Deploy database image') {
+            steps {
+                script {
+                    docker.withRegistry('', registryCredential) {
                         sh "docker tag $imageDB $registry/$imageDB:$BUILD_NUMBER" 
                         sh "docker tag $imageDB $registry/$imageDB:latest"                               
                         sh "docker push $registry/$imageDB:$BUILD_NUMBER"
