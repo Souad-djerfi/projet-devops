@@ -9,7 +9,7 @@
         enabled: yes 
 
     - name: stopper docker-compose s'il tourne
-      docker-compose:
+      docker_compose:
         project_src: /tmp/
         state: absent
         ignore_errores: yes
