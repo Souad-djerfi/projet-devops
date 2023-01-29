@@ -8,6 +8,13 @@
         state: started
         enabled: yes 
 
+    - name: stopper docker-compose s'il tourne
+      docker-compose:
+        project_src: /tmp/
+        state: absent
+        ignore_errores: yes
+
+
     - name: supprimer les conteneurs 
       docker_container:
         name: falsk-app, mysql-db, redis
