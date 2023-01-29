@@ -28,6 +28,12 @@
         state: latest
         update_cache: true
 
+    
+    - name: supprimer les conteneurs 
+      docker_container:
+        name: falsk-app, mysql-db, redis
+        state: absent    
+
     - name: copier docker-compose.yml
       copy:
         src: projet-devops/docker-compose.yml

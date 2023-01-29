@@ -14,13 +14,7 @@
         state: absent
         ignore_errores: yes
 
-
-    - name: supprimer les conteneurs 
-      docker_container:
-        name: falsk-app, mysql-db, redis
-        state: absent
-
-          
+         
     - name: lancer docker-compose 
       docker_compose:
         project_src: /tmp/
