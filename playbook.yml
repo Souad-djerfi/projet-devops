@@ -18,6 +18,6 @@
       docker_compose:
         project_src: /tmp/
         state: present 
-        scale: 
-          flask-app: 2
+        #scale: 
+          #flask-app: 2
     
