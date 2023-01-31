@@ -18,11 +18,10 @@
       command: docker rmi $(docker images -q)
       ignore_errors: yes       
 
-    - name: démarrer Docker
-      systemd:
-        name: docker
-        state: started
-        enabled: yes 
+    - name: Lancer docker-compose sans cache
+      command: docker-compose up --build --no-cache
+      args:
+        chdir: /tmp/
 
     #- name: stopper docker-compose s'il tourne
      # docker_compose:
