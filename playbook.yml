@@ -8,6 +8,15 @@
         src: docker-compose.yml
         dest: /tmp/
 
+    - name: stopper docker-compose s'il tourne
+      docker_compose:
+        project_src: /tmp/
+        state: absent
+
+    - name: Supprimer toutes les images Docker
+      command: docker rmi $(docker images -q)
+      ignore_errors: yes       
+
     - name: démarrer Docker
       systemd:
         name: docker
