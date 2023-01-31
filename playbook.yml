@@ -1,6 +1,7 @@
 - name: playbook deployer decoker-compose
   become: yes
   hosts: all
+  gather_facts: false
   tasks:
 
     - name: copy docker-compose
