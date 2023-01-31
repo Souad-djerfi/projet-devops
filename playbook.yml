@@ -15,9 +15,10 @@
         state: absent
 
     - name: Supprimer toutes les images Docker
-      shell: |
-        docker images -q | xargs -r docker rmi
-      ignore_errors: yes
+      #shell: |
+       # docker images -q | xargs -r docker rmi
+      #ignore_errors: yes
+      command: docker rmi - f souaddjerfi/flask-app
       
 
     - name: Construire les images Docker 
