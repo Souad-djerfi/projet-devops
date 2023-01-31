@@ -1,0 +1,21 @@
+- name: playbook deployer decoker-compose
+  become: yes
+  hosts: all
+  tasks:
+    - name: démarrer Docker
+      systemd:
+        name: docker
+        state: started
+        enabled: yes 
+
+    - name: stopper docker-compose s'il tourne
+      docker_compose:
+        project_src: /tmp/
+        state: absent
+                 
+    - name: lancer docker-compose 
+      docker_compose:
+        project_src: /tmp/
+        state: present 
+        #scale: 
+          #flask-app: 2

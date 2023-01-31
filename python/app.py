@@ -27,23 +27,7 @@ def index():
     data={'messages':messages,'visits':visits}
 
     return render_template('index.html', **data)
-    """
-        <html>
-            <body>
-                <h1>Tu est le visiteur n°  {visits}.</h1>
-                <p>Dernier messages :</p>
-                <ul>
-                    {
-                        "".join([f"<li>{message}</li>" for message in messages])
-                    }
-                </ul>
-                <form method="post">
-                    <input type="text" name="message" />
-                    <input type="submit" value="Send" />
-                </form>
-            </body>
-        </html>
-    """
+    
 
 @app.route("/", methods=["POST"])
 def add_message():
