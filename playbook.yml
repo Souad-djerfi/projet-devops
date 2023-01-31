@@ -20,8 +20,8 @@
       ignore_errors: yes
       
 
-    - name: Construire les images Docker sans cache
-      command: docker-compose build --no-cache
+    - name: Construire les images Docker 
+      command: docker-compose build 
       args:
         chdir: /tmp
 
