@@ -20,10 +20,10 @@
       ignore_errors: yes
       
 
-    - name: Construire les images Docker 
-      command: docker-compose build 
-      args:
-        chdir: /tmp
+    #- name: Construire les images Docker 
+      #command: docker-compose build 
+      #args:
+        #chdir: /tmp
 
     - name: Lancer docker-compose 
       docker_compose: 
