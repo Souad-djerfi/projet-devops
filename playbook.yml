@@ -18,8 +18,13 @@
       command: docker rmi $(docker images -q)
       ignore_errors: yes       
 
+    - name: Construire les images Docker avec docker-compose
+      command: docker-compose build --no-cache
+      args:
+        chdir: /tmp
+
     - name: Lancer docker-compose sans cache
-      command: docker-compose up --build --no-cache
+      command: docker-compose up 
       args:
         chdir: /tmp/
 
