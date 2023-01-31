@@ -15,17 +15,20 @@
         state: absent
 
     - name: Supprimer toutes les images Docker
-      command: docker rmi $(docker images -q)
-      ignore_errors: yes       
+      shell: |
+        docker images -q | xargs -r docker rmi
+      ignore_errors: yes
+      
 
-    - name: Construire les images Docker avec docker-compose
+    - name: Construire les images Docker sans cache
       command: docker-compose build --no-cache
       args:
         chdir: /tmp
 
-    - name: Lancer docker-compose sans cache
-      command: docker-compose up 
-      args:
-        chdir: /tmp/
+    - name: Lancer docker-compose 
+      docker-compose: 
+         project_src: /tmpt/
+         state: present
+      
 
     
