@@ -26,7 +26,7 @@
         chdir: /tmp
 
     - name: Lancer docker-compose 
-      docker-compose: 
+      docker_compose: 
          project_src: /tmpt/
          state: present
       
