@@ -8,11 +8,19 @@
         state: started
         enabled: yes 
 
-    - name: stopper docker-compose s'il tourne
-      docker_compose:
-        project_src: /tmp/
-        state: absent
-                 
+    #- name: stopper docker-compose s'il tourne
+     # docker_compose:
+      #  project_src: /tmp/
+       # state: absent
+
+    - name: Stop Docker containers
+      shell: docker-compose down
+      args:
+        chdir: /tmp
+      when: "'docker-compose' in command('docker-compose ps', False)"
+      tags:
+        - docker
+         
     - name: lancer docker-compose 
       docker_compose:
         project_src: /tmp/
