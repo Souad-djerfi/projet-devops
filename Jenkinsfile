@@ -28,7 +28,7 @@ pipeline {
         stage('Build database image') {
             steps {
                 script {
-                    sh "docker build -t $imageFlask ./python "
+                    sh "docker build -t $imageFlask ./database "
                 }
             }
         }   
