@@ -28,9 +28,14 @@
 
     - name: Install newman
       command: npm install -g newman
+    
+    - name: Copy test newman
+      copy:
+        src: TestProjetDevOps.postman_collection.json
+        dest: /tmp/
 
     - name: Executer le test newman
-      command: newman run ./TestProjetDevOps.postman_collection.json
+      command: newman run /tmp/TestProjetDevOps.postman_collection.json
         
 
     
