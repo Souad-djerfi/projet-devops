@@ -25,6 +25,12 @@
       command: docker-compose up -d
       args:
         chdir: /tmp
+
+    - name: Install newman
+      command: npm install -g newman
+
+    - name: Executer le test newman
+      command: newman run ./TestProjetDevOps.postman_collection.json
         
 
     
