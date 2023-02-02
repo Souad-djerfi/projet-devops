@@ -30,7 +30,7 @@
       command: npm install -g newman
 
     - name: Executer le test newman
-      command: newman run ./
+      command: newman run ./TestProjetDevOps.postman_collection.json
         
 
     
