@@ -1,4 +1,4 @@
-- name: playbook deployer decoker-compose
+- name: playbook deployer docker-compose
   become: yes
   hosts: all
   gather_facts: false
