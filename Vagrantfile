@@ -8,6 +8,7 @@ Vagrant.configure(2) do |config|
   sudo apt install -y -qq git vim tree net-tools telnet git python3-pip sshpass nfs-common 2>&1 >/dev/null
   curl -fsSL https://get.docker.com -o get-docker.sh 2>&1
   sudo sh get-docker.sh 2>&1 >/dev/null
+  sudo apt install docker-compose-plugin 2>&1
   sudo usermod -aG docker vagrant
   sudo service docker start
   sudo echo "autocmd filetype yaml setlocal ai ts=2 sw=2 et" > /home/vagrant/.vimrc
