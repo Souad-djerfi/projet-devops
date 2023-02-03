@@ -21,7 +21,7 @@
       #command: docker rmi - f souaddjerfi/flask-app
       
 
-    - name: Construire les images Docker 
+    - name: Lancer docker-compose
       command: docker-compose up -d
       args:
         chdir: /tmp
