@@ -1,8 +1,14 @@
+import sqlite3, requests, time, logging, random
 from flask import Flask, request, render_template
 import redis
 import mysql.connector
+from prometheus_flask_exporter import PrometheusMetrics
+
 
 app = Flask(__name__)
+metrics = PrometheusMetrics(app)
+metrics.info('app_info', 'Application info', version='1.0.3')
+
 
 # Connect to Redis database
 redis_db = redis.Redis(host="redis-db", port=6379)
