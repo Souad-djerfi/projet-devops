@@ -4,6 +4,11 @@
   gather_facts: false
   tasks:
 
+    - name: S'assure que docker est demarré
+      systemd:
+        state: started
+        name: docker
+
     - name: copy docker-compose
       copy:
         src: docker-compose.yml
