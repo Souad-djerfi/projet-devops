@@ -8,7 +8,7 @@ volumes:
 services:
     flask-app:
         container_name: flask-app
-        image: afarizahalim/flask-app:latest
+        image: souaddjerfi/flask-app:latest
         restart: always
         ports:
             - '5000:5000'
@@ -20,7 +20,7 @@ services:
         
     mysql-db:
         container_name: mysql-db
-        image: afarizahalim/mysql-db:latest
+        image: souaddjerfi/mysql-db:latest
         restart: always
         command: --default-authentication-plugin=mysql_native_password
         environment:
