@@ -2,3 +2,4 @@ flask
 requests
 redis
 mysql.connector
+prometheus-flask-exporter
