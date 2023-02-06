@@ -8,9 +8,7 @@ volumes:
 services:
     flask-app:
         container_name: flask-app
-        #build: ./python/
-        #command: sh -c "sleep 10s; python3 ./app.py"
-        image: souaddjerfi/flask-app:latest
+        image: afarizahalim/flask-app:latest
         restart: always
         ports:
             - '5000:5000'
@@ -22,8 +20,7 @@ services:
         
     mysql-db:
         container_name: mysql-db
-        #build: ./database/
-        image: souaddjerfi/mysql-db:latest
+        image: afarizahalim/mysql-db:latest
         restart: always
         command: --default-authentication-plugin=mysql_native_password
         environment:
@@ -42,10 +39,6 @@ services:
             - '6379:6379'
         volumes: 
             - redis:/data    
-        
-
-              
-
 
 
 

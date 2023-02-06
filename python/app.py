@@ -4,7 +4,6 @@ import redis
 import mysql.connector
 from prometheus_flask_exporter import PrometheusMetrics
 
-
 app = Flask(__name__)
 metrics = PrometheusMetrics(app)
 metrics.info('app_info', 'Application info', version='1.0.3')
@@ -49,7 +48,6 @@ def add_message():
     mysql_db.commit()
 
     return "Message sent!"
-
 
 metrics.register_default(
     metrics.counter(
