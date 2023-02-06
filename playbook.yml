@@ -12,11 +12,11 @@
     - name: copy docker-compose
       copy:
         src: docker-compose.yml
-        dest: /tmp/
+        dest: /docker
 
     - name: stopper docker-compose s'il tourne
       docker_compose:
-        project_src: /tmp/
+        project_src: /docker/
         state: absent
 
     - name: Supprimer toutes les images Docker
@@ -29,4 +29,4 @@
     - name: Lancer docker-compose
       command: docker-compose up -d
       args:
-        chdir: /tmp
+        chdir: /docker
