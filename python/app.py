@@ -8,6 +8,7 @@ from prometheus_flask_exporter import PrometheusMetrics
 app = Flask(__name__)
 metrics = PrometheusMetrics(app)
 metrics.info('app_info', 'Application info', version='1.0.3')
+print(metrics)
 
 
 # Connect to Redis database
@@ -20,6 +21,8 @@ mysql_db = mysql.connector.connect(
     password="",
     database="test"
 )
+cursor = mysql_db.cursor()
+
 
 @app.route("/")
 def index():
@@ -27,7 +30,7 @@ def index():
     visits = redis_db.incr("visits")
 
     # Retrieve the latest messages from MySQL
-    cursor = mysql_db.cursor()
+#    cursor = mysql_db.cursor()
     cursor.execute("SELECT message, id FROM messages ORDER BY id DESC LIMIT 10")
     messages = cursor.fetchall()
     data={'messages':messages,'visits':visits}
@@ -41,11 +44,19 @@ def add_message():
     message = request.form["message"]
 
     # Store the message in the database
-    cursor = mysql_db.cursor()
+    #cursor = mysql_db.cursor()
     cursor.execute("INSERT INTO messages (message) VALUES (%s)", (message,))
     mysql_db.commit()
 
     return "Message sent!"
 
+
+metrics.register_default(
+    metrics.counter(
+        'by_path_counter', 'Request count by request paths',
+        labels={'path': lambda: request.path}
+    )
+)
+
 if __name__ == "__main__":
-    app.run(debug=True,host='0.0.0.0', port='5000')
+    app.run(host='0.0.0.0', port='5000')
