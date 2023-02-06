@@ -12,11 +12,11 @@
     - name: copy docker-compose
       copy:
         src: docker-compose.yml
-        dest: /docker
+        dest: /home/vagrant/docker
 
     - name: stopper docker-compose s'il tourne
       docker_compose:
-        project_src: /docker/
+        project_src: /home/vagrant/docker
         state: absent
 
     - name: Supprimer toutes les images Docker
@@ -29,4 +29,4 @@
     - name: Lancer docker-compose
       command: docker-compose up -d
       args:
-        chdir: /docker
+        chdir: /home/vagrant/docker
