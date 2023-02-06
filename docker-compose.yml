@@ -13,7 +13,7 @@ services:
         ports:
             - '5000:5000'
         volumes:
-            - /home/vagrant/volume:app
+            - /home/vagrant/volume:/app
         depends_on:
            - mysql-db
            - redis-db    
