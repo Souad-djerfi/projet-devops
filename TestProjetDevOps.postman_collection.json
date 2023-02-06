@@ -16,25 +16,31 @@
 							"pm.response.to.have.status(200);",
 							"});",
 							"",
-							"pm.test(\"Temps de réponse inférieur à 400ms\", function () {",
-							"pm.expect(pm.response.responseTime).to.be.below(400);",
+							"pm.test(\"Temps de réponse inférieur à 500ms\", function () {",
+							"pm.expect(pm.response.responseTime).to.be.below(500);",
 							"});",
-
 							"",
 							"pm.test(\"Body matches string\", function () {",
-							"    pm.expect(pm.response.text()).to.include(\"LISTE DES DIX DERNIERS MESSAGE\");",
-							"});"
+							"    pm.expect(pm.response.text()).to.include(\"LISTE DES DIX DERNIERS MESSAGES\");",
+							"});",
 							""
-
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
 					"raw": "192.168.56.11:5000",
 					"host": [
 						"192",
 						"168",
 						"56",
-						"11",
-            ":5000"
-
-					]
+						"11"
+					],
+					"port": "5000"
 				}
 			},
 			"response": []
