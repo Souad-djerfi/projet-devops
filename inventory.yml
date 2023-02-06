@@ -1,0 +1,5 @@
+all:
+ children:
+   docker_server:
+     hosts:
+       node2:

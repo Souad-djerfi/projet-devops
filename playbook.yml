@@ -1,0 +1,32 @@
+- name: playbook deployer docker-compose
+  become: yes
+  hosts: all
+  gather_facts: false
+  tasks:
+
+    - name: S'assure que docker est demarré
+      systemd:
+        state: started
+        name: docker
+
+    - name: copy docker-compose
+      copy:
+        src: docker-compose.yml
+        dest: /home/vagrant/docker
+
+    - name: stopper docker-compose s'il tourne
+      docker_compose:
+        project_src: /home/vagrant/docker
+        state: absent
+
+    - name: Supprimer toutes les images Docker
+      shell: |
+        docker images -q | xargs -r docker rmi
+      ignore_errors: yes
+      #command: docker rmi - f souaddjerfi/flask-app
+      
+
+    - name: Lancer docker-compose
+      command: docker-compose up -d
+      args:
+        chdir: /home/vagrant/docker
