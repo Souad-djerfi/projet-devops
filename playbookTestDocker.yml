@@ -1,0 +1,9 @@
+- name: Vérifie si docker engine fonctionne
+  become: yes
+  hosts: all
+  gather_facts: false
+  tasks:
+  - name: Redémarre docker si state = stopped
+    systemd:
+      name: docker
+      state: started
