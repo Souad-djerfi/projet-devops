@@ -13,7 +13,7 @@ services:
         ports:
             - '5000:5000'
         volumes:
-            - /home/vagrant/app:app
+            - /home/vagrant/volume:app
         depends_on:
            - mysql-db
            - redis-db    
@@ -29,7 +29,7 @@ services:
         ports:
             - '3306:3306'
         volumes:
-            - /home/vagrant/database:/var/lib/mysql
+            - /home/vagrant/volume:/var/lib/mysql
         
     redis-db:
         container_name: redis-db
@@ -38,7 +38,7 @@ services:
         ports:
             - '6379:6379'
         volumes: 
-            - /home/vagrant/redis:/data    
+            - /home/vagrant/volume:/data    
 
 
 
